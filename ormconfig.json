@@ -1,17 +1,17 @@
 {
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "docker",
-    "database": "fb",
-    "entities": [
-      "./src/models/*.ts"
-    ],
-    "migrations": [
-      "./src/database/migrations/*.ts"
-    ],
-    "cli": {
-      "migrationsDir": "./src/database/migrations"
-    }
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "fb",
+  "password": "cc9e677fd8203ae22aadcda990a1bc71",
+  "database": "fb",
+  "entities": [
+    "./src/models/*.ts"
+  ],
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
   }
+}

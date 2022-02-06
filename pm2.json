@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "api",
+            "script" : "src/server.ts",
+            "exec_mode": "fork",
+            "env": {
+                "NODE_ENV": "production"
+            },
+            "interpreter" : "./node_modules/.bin/ts-node",
+            "interpreter_args": "--transpile-only"
+        }
+    ]
+}
