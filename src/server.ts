@@ -13,12 +13,14 @@ import "./database";
 
 const app = express();
 
+
 app.use(cors());
 app.use(express.json());
 
 app.use(bodyParser.json({limit:'50mb'})); 
 app.use(bodyParser.urlencoded({extended:true, limit:'50mb'})); 
 app.use('/files', express.static(uploadConfig.directory));
+app.options('*', cors());
 app.use(routes);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
