@@ -9,11 +9,18 @@ import uploadConfig from './config/upload';
 import AppError from './errors/AppError';
 import bodyParser from  'body-parser'; 
 
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+
 import "./database";
 
 const app = express();
-app.use(cors());
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
 app.use(bodyParser.json({limit:'50mb'})); 
 app.use(bodyParser.urlencoded({extended:true, limit:'50mb'})); 
 app.use('/files', express.static(uploadConfig.directory));
