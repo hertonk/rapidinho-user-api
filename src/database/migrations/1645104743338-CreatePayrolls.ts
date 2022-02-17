@@ -1,11 +1,11 @@
-import {MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
-export class CreateClients1642062688494 implements MigrationInterface {
+export class CreatePayrolls1645104743338 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'clients',
+                name: 'payrolls',
                 columns: [
                     {
                         name: "id",
@@ -15,73 +15,88 @@ export class CreateClients1642062688494 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
-                        name: "name",
+                        name: "employee_id",
+                        type: "uuid",
+                    },
+                    {
+                        name: "company_id",
+                        type: "uuid",
+                    },
+                    {
+                        name: "employee_name",
                         type: "varchar",
                     },
                     {
-                        name: "nick",
+                        name: "company_name",
                         type: "varchar",
                     },
                     {
-                        name: "email",
+                        name: "company_reg",
                         type: "varchar",
                     },
                     {
-                        name: "telephone",
+                        name: "role",
                         type: "varchar",
                     },
                     {
-                        name: "birthday",
-                        type: "date",
-                    },
-                    {
-                        name: "cpf",
-                        type: "varchar",
-                        isUnique: true,
-                    },
-                    {
-                        name: "gender",
+                        name: "cost_center",
                         type: "varchar",
                     },
                     {
-                        name: "obs",
+                        name: "company_department",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "instagram",
+                        name: "company_branch",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "street",
+                        name: "admission_date",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "number",
+                        name: "rubrik_name",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "neighborhood",
+                        name: "rubrik_code",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "complement",
+                        name: "reference",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "city",
+                        name: "event_value",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
-                        name: "state",
+                        name: "event_type",
                         type: "varchar",
-                        isNullable: true,
+                    },
+                    {
+                        name: "salary",
+                        type: "varchar",
+                    },
+                    {
+                        name: "base_inss",
+                        type: "varchar",
+                    },
+                    {
+                        name: "base_irrf",
+                        type: "varchar",
+                    },
+                    {
+                        name: "base_fgts",
+                        type: "varchar",
+                    },
+                    {
+                        name: "month_fgts",
+                        type: "varchar",
+                    },
+                    {
+                        name: "level_irrf",
+                        type: "varchar",
                     },
                     {
                         name: "created_at",
@@ -97,47 +112,27 @@ export class CreateClients1642062688494 implements MigrationInterface {
             })
         );
 
-        await queryRunner.addColumn('clients', new TableColumn({
-            name: 'brand', 
-            type: 'uuid',
-            isNullable: true
-        }));
-
-        await queryRunner.createForeignKey('clients', new TableForeignKey({
-            name: 'ClientBrand',
-            columnNames: ['brand'],
+        await queryRunner.createForeignKey('payrolls', new TableForeignKey({
+            name: 'EmployeePayrolls',
+            columnNames: ['employee_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'brands',
+            referencedTableName: 'employees',
             onDelete: 'SET NULL',
             onUpdate: 'CASCADE'
         }));
 
-        await queryRunner.addColumn('clients', new TableColumn({
-            name: 'model', 
-            type: 'uuid',
-            isNullable: true
-        }));
-
-        await queryRunner.createForeignKey('clients', new TableForeignKey({
-            name: 'ClientModel',
-            columnNames: ['model'],
+        await queryRunner.createForeignKey('payrolls', new TableForeignKey({
+            name: 'CompanyPayrolls',
+            columnNames: ['company_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'models',
+            referencedTableName: 'companies',
             onDelete: 'SET NULL',
             onUpdate: 'CASCADE'
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('clients', 'ClientBrand');
-
-        await queryRunner.dropForeignKey('clients', 'ClientModel');
-        
-        await queryRunner.dropColumn('clients', 'brand');
-
-        await queryRunner.dropColumn('clients', 'model');
-
-        await queryRunner.dropTable('clients');
+        await queryRunner.dropTable('payrolls');
     }
 
 }

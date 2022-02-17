@@ -2,9 +2,9 @@
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
-  "username": "fb",
-  "password": "cc9e677fd8203ae22aadcda990a1bc71",
-  "database": "fb",
+  "username": "postgres",
+  "password": "docker",
+  "database": "fourrh",
   "entities": [
     "./src/models/*.ts"
   ],

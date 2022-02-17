@@ -1,11 +1,11 @@
-import {MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
-export class CreateModels1642062601971 implements MigrationInterface {
+export class CreateCompanies1645103321067 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'models',
+                name: 'companies',
                 columns: [
                     {
                         name: "id",
@@ -15,18 +15,21 @@ export class CreateModels1642062601971 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
+                        name: "manager_id",
+                        type: "uuid",
+                    },
+                    {
                         name: "name",
                         type: "varchar",
                     },
                     {
-                        name: "obs",
+                        name: "description",
                         type: "varchar",
-                        isNullable: true,
+                        isNullable: true
                     },
                     {
-                        name: "photo",
+                        name: "logo",
                         type: "varchar",
-                        isNullable: true,
                     },
                     {
                         name: "created_at",
@@ -42,24 +45,18 @@ export class CreateModels1642062601971 implements MigrationInterface {
             })
         );
 
-        await queryRunner.addColumn('models', new TableColumn({
-            name: 'brand', 
-            type: 'uuid',
-            isNullable: true
-        }));
-
-        await queryRunner.createForeignKey('models', new TableForeignKey({
-            name: 'ModelBrand',
-            columnNames: ['brand'],
+        await queryRunner.createForeignKey('companies', new TableForeignKey({
+            name: 'ManagersCompanies',
+            columnNames: ['manager_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'brands',
+            referencedTableName: 'managers',
             onDelete: 'SET NULL',
             onUpdate: 'CASCADE'
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('models');
+        await queryRunner.dropTable('companies');
     }
 
 }
