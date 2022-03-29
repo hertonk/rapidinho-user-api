@@ -52,5 +52,5 @@ class UpdateProductService {
     }
 
 }
-a
+
 export default UpdateProductService;
