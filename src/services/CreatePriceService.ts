@@ -1,0 +1,30 @@
+import { getRepository } from 'typeorm';
+
+import AppError from '../errors/AppError';
+import Price from '../models/Price';
+
+interface Request {
+    min: string;
+    max: string;
+    value: number;
+}
+
+class CreatePriceService {
+
+    public async execute({ min, max, value }: Request): Promise<Price> {
+        const pricesRepository = getRepository(Price);
+
+        const price = pricesRepository.create({
+            min,
+            max, 
+            value
+        });
+
+        await pricesRepository.save(price);
+
+        return price;
+    }
+
+}
+
+export default CreatePriceService;

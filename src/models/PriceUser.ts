@@ -1,27 +1,27 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import Manager from './Manager';
+import User from './User';
 
-@Entity('companies')
-class Company {
+@Entity('prices-users')
+class PriceUser {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column('varchar')
-    manager_id: string;
+    user_id: string;
 
-    @ManyToOne(() => Manager)
-    @JoinColumn({ name: 'manager_id' })
-    manager: Manager;
-
-    @Column('varchar')
-    name: string;
+    @ManyToOne(() => User)
+    @JoinColumn({ name: 'user_id' })
+    user: User;
 
     @Column('varchar')
-    description: string;
+    min: string;
 
     @Column('varchar')
-    logo: string;
+    max: string;
+
+    @Column('decimal', { precision: 5, scale: 2 })
+    value: number;
 
     @CreateDateColumn()
     created_at: Date;
@@ -31,4 +31,4 @@ class Company {
 
 }
 
-export default Company;
+export default PriceUser;

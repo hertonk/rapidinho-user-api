@@ -4,7 +4,7 @@
   "port": 5432,
   "username": "postgres",
   "password": "docker",
-  "database": "fourrh",
+  "database": "galva",
   "entities": [
     "./src/models/*.ts"
   ],

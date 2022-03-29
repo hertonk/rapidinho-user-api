@@ -2,12 +2,10 @@ import { Router } from 'express';
 
 import usersRouter from './users.routes';
 import sessionsRouter from './sessions.routes';
-import managersRouter from './managers.routes';
-import sessionsManagersRouter from './sessionsmanagers.routes';
-import employeesRouter from './employees.routes';
-import sessionsEmployeesRouter from './sessionsemployees.routes';
-import companiesRouter from './companies.routes';
-import payrollsRouter from './payrolls.routes';
+
+import categoriesProductsRouter from './categoriesproducts.routes';
+import productsRouter from './products.routes';
+import manufacturesRouter from './manufactures.routes';
 
 const routes = Router();
 
@@ -15,18 +13,13 @@ const routes = Router();
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
 
-// Managers
-routes.use('/managers', managersRouter);
-routes.use('/sessionsmanagers', sessionsManagersRouter);
+//Categories Products
+routes.use('/categoriesproducts', categoriesProductsRouter);
 
-// Employees
-routes.use('/employees', employeesRouter);
-routes.use('/sessionsemployees', sessionsEmployeesRouter);
+//Manufactures
+routes.use('/manufactures', manufacturesRouter);
 
-// Companies
-routes.use('/companies', companiesRouter);
-
-//Payrools
-routes.use('/payrolls', payrollsRouter);
+//Products
+routes.use('/products', productsRouter);
 
 export default routes;

@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity('employees')
-class Employee {
+@Entity('categories-products')
+class CategoryProduct {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -10,13 +10,7 @@ class Employee {
     name: string;
 
     @Column('varchar')
-    email: string;
-
-    @Column('varchar')
-    password: string;
-
-    @Column('varchar')
-    avatar: string;
+    description: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -26,4 +20,4 @@ class Employee {
 
 }
 
-export default Employee;
+export default CategoryProduct;

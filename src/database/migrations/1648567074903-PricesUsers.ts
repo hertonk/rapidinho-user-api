@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
-export class CreateCompanies1645103321067 implements MigrationInterface {
+export class PricesUsers1648567074903 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'companies',
+                name: 'prices-users',
                 columns: [
                     {
                         name: "id",
@@ -15,21 +15,20 @@ export class CreateCompanies1645103321067 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
-                        name: "manager_id",
+                        name: "user_id",
                         type: "uuid",
                     },
                     {
-                        name: "name",
+                        name: "min",
                         type: "varchar",
                     },
                     {
-                        name: "description",
+                        name: "max",
                         type: "varchar",
-                        isNullable: true
                     },
                     {
-                        name: "logo",
-                        type: "varchar",
+                        name: "value",
+                        type: "decimal(5,2)",
                     },
                     {
                         name: "created_at",
@@ -45,18 +44,21 @@ export class CreateCompanies1645103321067 implements MigrationInterface {
             })
         );
 
-        await queryRunner.createForeignKey('companies', new TableForeignKey({
-            name: 'ManagersCompanies',
-            columnNames: ['manager_id'],
+        await queryRunner.createForeignKey('prices-users', new TableForeignKey({
+            name: 'UsersPrices',
+            columnNames: ['user_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'managers',
+            referencedTableName: 'users',
             onDelete: 'SET NULL',
             onUpdate: 'CASCADE'
         }));
+        
+        
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('companies');
+        await queryRunner.dropTable('prices-users');
     }
 
 }
+
