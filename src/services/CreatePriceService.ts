@@ -1,6 +1,5 @@
 import { getRepository } from 'typeorm';
 
-import AppError from '../errors/AppError';
 import Price from '../models/Price';
 
 interface Request {
