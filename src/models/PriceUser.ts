@@ -20,7 +20,7 @@ class PriceUser {
     @Column('varchar')
     max: string;
 
-    @Column('decimal', { precision: 5, scale: 2 })
+    @Column('varchar')
     value: number;
 
     @CreateDateColumn()
