@@ -15,29 +15,88 @@ export class CreateBudgets1649282433979 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
-                        name: "project_id",
+                        name: "min",
+                        type: "varchar",
+                    },
+                    {
+                        name: "max",
+                        type: "varchar",
+                    },
+                    {
+                        name: "budget_base",
                         type: "uuid",
-                        isNullable: true,
                     },
                     {
-                        name: "type",
+                        name: "inverter",
                         type: "varchar",
                     },
                     {
-                        name: "venc",
-                        type: "date",
-                    },
-                    {
-                        name: "payment",
-                        type: "date",
-                    },
-                    {
-                        name: "desc",
+                        name: "module",
                         type: "varchar",
                     },
                     {
-                        name: "value",
-                        type: "decimal(5,2)",
+                        name: "module_qtd",
+                        type: "varchar",
+                    },
+                    {
+                        name: "materials",
+                        type: "varchar",
+                    },
+                    {
+                        name: "gift",
+                        type: "varchar",
+                    },
+                    {
+                        name: "installation",
+                        type: "varchar",
+                    },
+                    {
+                        name: "standard",
+                        type: "varchar",
+                    },
+                    {
+                        name: "freight",
+                        type: "varchar",
+                    },
+                    {
+                        name: "total_coast",
+                        type: "varchar",
+                    },
+                    {
+                        name: "margin",
+                        type: "varchar",
+                    },
+                    {
+                        name: "nf",
+                        type: "varchar",
+                    },
+                    {
+                        name: "fiscal_coast",
+                        type: "varchar",
+                    },
+                    {
+                        name: "commission",
+                        type: "varchar",
+                    },
+                    {
+                        name: "real_margin",
+                        type: "varchar",
+                    },
+                    {
+                        name: "full_price",
+                        type: "varchar",
+                    },
+                    {
+                        name: "discount_percentage",
+                        type: "varchar",
+                    },
+                    {
+                        name: "discount_real",
+                        type: "varchar",
+                    },
+                    {
+                        name: "price_discount",
+                        type: "varchar",
                     },
                     {
                         name: "status",
