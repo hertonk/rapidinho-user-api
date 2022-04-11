@@ -8,6 +8,7 @@ import productsRouter from './products.routes';
 import manufacturesRouter from './manufactures.routes';
 import pricesRouter from './prices.routes';
 import pricesUsersRouter from './pricesusers.routes';
+import projectsRouter from './projects.routes';
 
 const routes = Router();
 
@@ -28,6 +29,9 @@ routes.use('/products', productsRouter);
 routes.use('/prices', pricesRouter);
 
 //Prices Users
-routes.use('/pricesusers', pricesRouter);
+routes.use('/pricesusers', pricesUsersRouter);
+
+//Projects
+routes.use('/projects', projectsRouter);
 
 export default routes;
