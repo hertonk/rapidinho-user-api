@@ -9,6 +9,20 @@ import manufacturesRouter from './manufactures.routes';
 import pricesRouter from './prices.routes';
 import pricesUsersRouter from './pricesusers.routes';
 import projectsRouter from './projects.routes';
+import ucsRouter from './ucs.routes';
+import invertersRouter from './inverters.routes';
+import filesRouter from './files.routes';
+import receiptsRouter from './receipts.routes';
+import paymentsRouter from './payments.routes';
+import budgetsRouter from './budgets.routes';
+import providersRouter from './providers.routes';
+import budgetsProvidersRouter from './budgetsproviders.routes';
+import clientsRouter from './clients.routes';
+import statesRouter from './states.routes';
+import cssRouter from './css.routes';
+import tensionRouter from './tensions.routes';
+import cablesRouter from './cables.routes';
+import switchesRouter from './switches.routes';
 
 const routes = Router();
 
@@ -33,5 +47,47 @@ routes.use('/pricesusers', pricesUsersRouter);
 
 //Projects
 routes.use('/projects', projectsRouter);
+
+//Ucs
+routes.use('/ucs', ucsRouter);
+
+//Inverters
+routes.use('/inverters', invertersRouter);
+
+//Files
+routes.use('/filesupload', filesRouter);
+
+//Receipts
+routes.use('/receipts', receiptsRouter);
+
+//Payments
+routes.use('/payments', paymentsRouter);
+
+//Budgets
+routes.use('/budgets', budgetsRouter);
+
+//Providers
+routes.use('/providers', providersRouter);
+
+//Budgets Providers
+routes.use('/budgetsproviders', budgetsProvidersRouter);
+
+//Clients
+routes.use('/clients', clientsRouter);
+
+//States
+routes.use('/states', statesRouter);
+
+//Css
+routes.use('/css', cssRouter);
+
+//Tensions
+routes.use('/tensions', tensionRouter);
+
+//Cables
+routes.use('/cables', cablesRouter);
+
+//Switches
+routes.use('/switches', switchesRouter);
 
 export default routes;

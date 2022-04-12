@@ -1,19 +1,33 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import Project from './Project';
 
-@Entity('prices')
-class Price {
+@Entity('receipts')
+class Receipt {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column('varchar')
-    min: string;
+    project_id: string;
+
+    @ManyToOne(() => Project)
+    @JoinColumn({ name: 'project_id' })
+    project: Project;
 
     @Column('varchar')
-    max: string;
+    type: string;
+
+    @Column('date')
+    venc: string;
+
+    @Column('varchar')
+    desc: string;
 
     @Column('varchar')
     value: string;
+
+    @Column('varchar')
+    status: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -23,4 +37,4 @@ class Price {
 
 }
 
-export default Price;
+export default Receipt;

@@ -1,19 +1,13 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 
-@Entity('prices')
-class Price {
+@Entity('swicthes')
+class Swicthe {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column('varchar')
-    min: string;
-
-    @Column('varchar')
-    max: string;
-
-    @Column('varchar')
-    value: string;
+    name: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -23,4 +17,4 @@ class Price {
 
 }
 
-export default Price;
+export default Swicthe;

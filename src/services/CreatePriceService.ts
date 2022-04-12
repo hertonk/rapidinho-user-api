@@ -5,7 +5,7 @@ import Price from '../models/Price';
 interface Request {
     min: string;
     max: string;
-    value: number;
+    value: string;
 }
 
 class CreatePriceService {

@@ -1,19 +1,27 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import Project from './Project';
 
-@Entity('prices')
-class Price {
+@Entity('ucs')
+class Uc {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column('varchar')
-    min: string;
+    project_id: string;
+    
+    @ManyToOne(() => Project)
+    @JoinColumn({ name: 'project_id' })
+    project: Project;
 
     @Column('varchar')
-    max: string;
+    uc: string;
 
     @Column('varchar')
-    value: string;
+    percentage: number;
+
+    @Column('varchar')
+    address: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -23,4 +31,4 @@ class Price {
 
 }
 
-export default Price;
+export default Uc;

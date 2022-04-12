@@ -8,7 +8,7 @@ interface Request {
     user_id: string;
     min: string;
     max: string;
-    value: number;
+    value: string;
 }
 
 class CreatePriceUserService {

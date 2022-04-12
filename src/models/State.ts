@@ -1,20 +1,17 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 
-@Entity('prices')
-class Price {
+@Entity('states')
+class State {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column('varchar')
-    min: string;
+    name: string;
 
     @Column('varchar')
-    max: string;
-
-    @Column('varchar')
-    value: string;
-
+    uf: string;
+    
     @CreateDateColumn()
     created_at: Date;
 
@@ -23,4 +20,4 @@ class Price {
 
 }
 
-export default Price;
+export default State;

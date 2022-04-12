@@ -1,19 +1,21 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import State from './State';
 
-@Entity('prices')
-class Price {
+@Entity('css')
+class Css {
     
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column('varchar')
-    min: string;
+    state_id: string;
+
+    @ManyToOne(() => State)
+    @JoinColumn({ name: 'state_id' })
+    state: State;
 
     @Column('varchar')
-    max: string;
-
-    @Column('varchar')
-    value: string;
+    name: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -23,4 +25,4 @@ class Price {
 
 }
 
-export default Price;
+export default Css;
