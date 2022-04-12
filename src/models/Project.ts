@@ -81,6 +81,9 @@ class Project {
     transformer: string;
 
     @Column('varchar')
+    power_transformer: string;
+
+    @Column('varchar')
     class1: string;
 
     @Column('varchar')

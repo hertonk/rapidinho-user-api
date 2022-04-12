@@ -26,6 +26,7 @@ interface Request{
     complement: string;
     number: string;
     transformer: string;
+    power_transformer: string;
     class: string;
     ramal: string;
     connection: string;
@@ -70,6 +71,7 @@ class CreateProjectService {
         complement,
         number,
         transformer,
+        power_transformer,
         class1,
         ramal,
         connection,
@@ -114,6 +116,7 @@ class CreateProjectService {
             complement,
             number,
             transformer,
+            power_transformer,
             class1,
             ramal,
             connection,
