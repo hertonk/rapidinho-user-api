@@ -1,7 +1,6 @@
 import { Router } from "express";
 import multer from 'multer';
 import uploadConfig from "../config/upload";
-
 import CreateFileService from "../services/CreateFileService";
 
 const filesRouter = Router();
@@ -23,11 +22,10 @@ filesRouter.post(
             const fileOb = await createFile.execute({ 
                 project_id,
                 name: request.file?.filename,
-                path: request.file?.path
             });
 
             return response.json({
-                file: request.file?.filename
+                img: request.file?.filename
             });
 
         } catch(err) {
