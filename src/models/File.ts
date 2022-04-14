@@ -17,9 +17,6 @@ class File {
     @Column('varchar')
     name: string;
 
-    @Column('varchar')
-    path: string;
-
     @CreateDateColumn()
     created_at: Date;
 
