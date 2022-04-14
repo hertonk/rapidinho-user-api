@@ -15,10 +15,8 @@ filesRouter.post(
         try {
 
             const { 
-                project_id,
-                name,
-                path,
-             } = request.body;
+                project_id
+             } = request.params;
 
             const createFile = new CreateFileService();
 

@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 
-@Entity('swicthes')
+@Entity('switches')
 class Swicthe {
     
     @PrimaryGeneratedColumn('uuid')
