@@ -77,4 +77,16 @@ tensionRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
+tensionRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const tenionsRepository = getRepository(Tension);
+
+    const tension = await tenionsRepository.delete(id);
+
+    return response.json();
+
+});
+
 export default tensionRouter;

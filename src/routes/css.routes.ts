@@ -77,4 +77,16 @@ cssRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
+cssRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const cssRepository = getRepository(Css);
+
+    const css = await cssRepository.delete(id);
+
+    return response.json();
+
+});
+
 export default cssRouter;

@@ -8,13 +8,6 @@ class Tension {
     id: string;
 
     @Column('varchar')
-    css_id: string;
-
-    @ManyToOne(() => Css)
-    @JoinColumn({ name: 'css_id' })
-    css: Css;
-
-    @Column('varchar')
     tension: string;
 
     @CreateDateColumn()

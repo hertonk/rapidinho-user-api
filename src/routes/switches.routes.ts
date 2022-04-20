@@ -73,4 +73,16 @@ switchesRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
+switchesRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const switchesRepository = getRepository(Switche);
+
+    const switche = await switchesRepository.delete(id);
+
+    return response.json();
+
+});
+
 export default switchesRouter;

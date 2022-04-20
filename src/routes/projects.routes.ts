@@ -89,7 +89,6 @@ projectsRouter.post('/', ensureAuthenticated, async (request, response) => {
             ramal,
             connection,
             cable,
-            category,
             disjuntor,
             tension,
             post,
@@ -134,7 +133,6 @@ projectsRouter.post('/', ensureAuthenticated, async (request, response) => {
             ramal,
             connection,
             cable,
-            category,
             disjuntor,
             tension,
             post,
@@ -188,7 +186,6 @@ projectsRouter.patch('/', ensureAuthenticated, async (request, response) => {
             ramal,
             connection,
             cable,
-            category,
             disjuntor,
             tension,
             post,
@@ -234,7 +231,6 @@ projectsRouter.patch('/', ensureAuthenticated, async (request, response) => {
             ramal,
             connection,
             cable,
-            category,
             disjuntor,
             tension,
             post,
@@ -253,6 +249,19 @@ projectsRouter.patch('/', ensureAuthenticated, async (request, response) => {
         return response.status(400).json({ error: err.message });
     }
     
+});
+
+
+projectsRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const pricesRepository = getRepository(Project);
+
+    const price = await pricesRepository.delete(id);
+
+    return response.json();
+
 });
 
 export default projectsRouter;

@@ -73,4 +73,16 @@ cablesRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
+cablesRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const cablesRepository = getRepository(Cable);
+
+    const cable = await cablesRepository.delete(id);
+
+    return response.json();
+
+});
+
 export default cablesRouter;

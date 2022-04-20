@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable } from 'typeorm';
+import Permission from './Permission';
+import Role from './Role';
 
 @Entity('users')
 class User {
@@ -17,6 +19,22 @@ class User {
 
     @Column('varchar')
     avatar: string;
+
+    @ManyToMany(() => Role)
+    @JoinTable({
+      name: "users_roles",
+      joinColumns: [{ name: "user_id" }],
+      inverseJoinColumns: [{ name: "role_id" }],
+    })
+    roles: Role[];
+  
+    @ManyToMany(() => Permission)
+    @JoinTable({
+      name: "users_permissions",
+      joinColumns: [{ name: "user_id" }],
+      inverseJoinColumns: [{ name: "permission_id" }],
+    })
+    permissions: Permission[];
 
     @CreateDateColumn()
     created_at: Date;

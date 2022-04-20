@@ -77,4 +77,16 @@ statesRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
+statesRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const statesRepository = getRepository(State);
+
+    const state = await statesRepository.delete(id);
+
+    return response.json();
+
+});
+
 export default statesRouter;

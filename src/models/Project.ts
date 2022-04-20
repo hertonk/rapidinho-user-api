@@ -96,9 +96,6 @@ class Project {
     cable: string;
 
     @Column('varchar')
-    category: string;
-
-    @Column('varchar')
     disjuntor: string;
 
     @Column('varchar')

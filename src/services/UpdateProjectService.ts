@@ -32,7 +32,6 @@ interface Request{
     ramal: string;
     connection: string;
     cable: string;
-    category: string;
     disjuntor: string;
     tension: string;
     post: string;
@@ -78,7 +77,6 @@ class UpdateProjectService {
         ramal,
         connection,
         cable,
-        category,
         disjuntor,
         tension,
         post,
@@ -123,7 +121,6 @@ class UpdateProjectService {
         project.ramal = ramal;
         project.connection = connection;
         project.cable = cable;
-        project.category = category;
         project.disjuntor = disjuntor;
         project.tension = tension;
         project.post = post;

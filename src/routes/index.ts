@@ -23,6 +23,11 @@ import cssRouter from './css.routes';
 import tensionRouter from './tensions.routes';
 import cablesRouter from './cables.routes';
 import switchesRouter from './switches.routes';
+import tensionsCssRouter from './tessioncss.routes';
+import rolesRouter from './roles.routes';
+import permissionsRouter from './permissions.routes';
+import usersACLRouter from './users.acl.routes';
+import rolesPermissionsRouter from './rolespermissions.routes';
 
 const routes = Router();
 
@@ -89,5 +94,20 @@ routes.use('/cables', cablesRouter);
 
 //Switches
 routes.use('/switches', switchesRouter);
+
+//Tension Css
+routes.use('/tensionscss', tensionsCssRouter);
+
+//Roles
+routes.use('/roles', rolesRouter);
+  
+//Permissions
+routes.use("/permissions", permissionsRouter);
+
+//Users ACL
+routes.use("/users/acl", usersACLRouter);
+
+//Roles ID
+routes.use("/roles/:roleId", rolesPermissionsRouter);  
 
 export default routes;

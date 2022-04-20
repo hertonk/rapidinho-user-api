@@ -101,4 +101,16 @@ productsRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
+productsRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const productsRepository = getRepository(Product);
+
+    const product = await productsRepository.delete(id);
+
+    return response.json();
+
+});
+
 export default productsRouter;
