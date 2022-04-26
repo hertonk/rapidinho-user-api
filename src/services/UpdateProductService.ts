@@ -8,12 +8,10 @@ interface Request {
     id: string;
     manufacturer_id: string;
     category_id: string;
-    name: string;
     model: string;
     power: string;
     inmetro: string;
     description: string;
-    photo: string;
 }
 
 class UpdateProductService {
@@ -22,12 +20,10 @@ class UpdateProductService {
         id,  
         manufacturer_id,
         category_id,
-        name,
         model,
         power,
         inmetro,
-        description,
-        photo,
+        description
     }: Request): Promise<Product> {
         const productsRepository = getRepository(Product);
 
@@ -39,12 +35,10 @@ class UpdateProductService {
 
         product.manufacturer_id = manufacturer_id;
         product.category_id = category_id;
-        product.name = name;
         product.model = model;
         product.power = power;
         product.inmetro = inmetro;
         product.description = description;
-        product.photo = photo;
 
         await productsRepository.save(product);
 

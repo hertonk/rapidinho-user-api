@@ -6,9 +6,8 @@ import ensureAuthenticated from "../middlewares/ensureAuthenticated";
 const usersACLRouter = Router();
 
 usersACLRouter.post('/', ensureAuthenticated, async (request, response) => {
-
-    const { permissions, roles } = request.body;
-    const { userId } = request;
+ 
+    const { userId, permissions, roles } = request.body;
 
     const createUserACLService = new CreateUserAccessControlListService();
 

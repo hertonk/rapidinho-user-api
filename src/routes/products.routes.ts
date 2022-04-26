@@ -37,12 +37,10 @@ productsRouter.post('/', ensureAuthenticated, async (request, response) => {
         const { 
             manufacturer_id,
             category_id,
-            name,
             model,
             power,
             inmetro,
-            description,
-            photo,
+            description
          } = request.body;
 
         const createProduct = new CreateProductService();
@@ -50,12 +48,10 @@ productsRouter.post('/', ensureAuthenticated, async (request, response) => {
         const product = await createProduct.execute({ 
             manufacturer_id,
             category_id,
-            name,
             model,
             power,
             inmetro,
-            description,
-            photo,
+            description
         });
 
         return response.json(product);
@@ -72,12 +68,10 @@ productsRouter.patch('/', ensureAuthenticated, async (request, response) => {
             id,  
             manufacturer_id,
             category_id,
-            name,
             model,
             power,
             inmetro,
-            description,
-            photo,
+            description
          } = request.body;
 
         const updateProduct = new UpdateProductService();
@@ -86,12 +80,10 @@ productsRouter.patch('/', ensureAuthenticated, async (request, response) => {
             id,  
             manufacturer_id,
             category_id,
-            name,
             model,
             power,
             inmetro,
-            description,
-            photo,
+            description
         });
 
         return response.json(product);

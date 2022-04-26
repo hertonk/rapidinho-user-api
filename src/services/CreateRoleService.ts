@@ -14,7 +14,7 @@ export class CreateRoleService {
       return new Error("Role already exists");
     }
 
-    const role = repo.create({ name, description });
+    const role = await repo.create({ name, description });
 
     await repo.save(role);
 

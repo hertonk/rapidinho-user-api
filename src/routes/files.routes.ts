@@ -1,6 +1,8 @@
 import { Router } from "express";
 import multer from 'multer';
+import { getRepository } from "typeorm";
 import uploadConfig from "../config/upload";
+import ensureAuthenticated from "../middlewares/ensureAuthenticated";
 import CreateFileService from "../services/CreateFileService";
 
 const filesRouter = Router();
@@ -33,5 +35,16 @@ filesRouter.post(
         }
 });
 
+filesRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+
+    const { id } = request.params;
+
+    const filesRepository = getRepository(File);
+
+    const file = await filesRepository.delete(id);
+
+    return response.json();
+
+});
 
 export default filesRouter;

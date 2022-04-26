@@ -23,9 +23,6 @@ class Product {
     category: CategoryProduct;
 
     @Column('varchar')
-    name: string;
-
-    @Column('varchar')
     model: string;
 
     @Column('varchar')
@@ -36,9 +33,6 @@ class Product {
 
     @Column('varchar')
     description: string;
-
-    @Column('varchar')
-    photo: string;
 
     @CreateDateColumn()
     created_at: Date;
