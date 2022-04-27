@@ -36,14 +36,18 @@ cssRouter.post('/', ensureAuthenticated, async (request, response) => {
     try{
         const {
            state_id,
-           name
+           name,
+           post,
+           transformer
          } = request.body;
 
         const createCss = new CreateCssService();
 
         const css = await createCss.execute({ 
             state_id,
-            name
+            name,
+            post,
+            transformer
         });
 
         return response.json(css);
@@ -59,7 +63,9 @@ cssRouter.patch('/', ensureAuthenticated, async (request, response) => {
         const { 
             id,  
             state_id,
-            name
+            name,
+            post,
+            transformer
          } = request.body;
 
         const updateCss = new UpdateCssService();
@@ -67,7 +73,9 @@ cssRouter.patch('/', ensureAuthenticated, async (request, response) => {
         const css = await updateCss.execute({ 
             id,  
             state_id,
-            name
+            name,
+            post,
+            transformer
         });
 
         return response.json(css);
@@ -77,7 +85,7 @@ cssRouter.patch('/', ensureAuthenticated, async (request, response) => {
     
 });
 
-cssRouter.delete('/:id', ensureAuthenticated, async (request, response) => {
+cssRouter.delete('/:id', async (request, response) => {
 
     const { id } = request.params;
 

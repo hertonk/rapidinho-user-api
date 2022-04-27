@@ -17,6 +17,12 @@ class Css {
     @Column('varchar')
     name: string;
 
+    @Column('varchar')
+    post: string;
+
+    @Column('varchar')
+    transformer: string;
+
     @CreateDateColumn()
     created_at: Date;
 

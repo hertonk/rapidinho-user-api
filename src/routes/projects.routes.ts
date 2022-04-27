@@ -23,11 +23,11 @@ projectsRouter.get('/:id', ensureAuthenticated, async (request, response) => {
 
     const { id } = request.params;
 
-    const pricesRepository = getRepository(Project);
+    const projectsRepository = getRepository(Project);
 
-    const price = await pricesRepository.findOne(id);
+    const project = await projectsRepository.findOne(id);
 
-    return response.json(price);
+    return response.json(project);
 
 });
 

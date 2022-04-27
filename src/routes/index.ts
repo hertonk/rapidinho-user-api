@@ -28,6 +28,9 @@ import rolesRouter from './roles.routes';
 import permissionsRouter from './permissions.routes';
 import usersACLRouter from './users.acl.routes';
 import rolesPermissionsRouter from './rolespermissions.routes';
+import datasheetsRouter from './datasheets.routes';
+import docsRouter from './docs.routes';
+import datasheetsProductsRouter from './datasheetsproducts.routes';
 
 const routes = Router();
 
@@ -109,5 +112,14 @@ routes.use("/users/acl", usersACLRouter);
 
 //Roles ID
 routes.use("/roles/:roleId", rolesPermissionsRouter);  
+
+//Datasheets
+routes.use("/datasheets", datasheetsRouter);
+
+//Docs
+routes.use("/docs", docsRouter);
+
+//Datasheets
+routes.use("/datasheetsproducts", datasheetsProductsRouter);
 
 export default routes;
