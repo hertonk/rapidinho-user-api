@@ -6,6 +6,9 @@ import CreateUserService from "../services/CreateUserService";
 import UpdateUserAvatarService from "../services/UpdateUserAvatarService";
 
 import ensureAuthenticated from "../middlewares/ensureAuthenticated";
+import { getRepository } from "typeorm";
+import User from "../models/User";
+import UserRole from "../models/UsersRoles";
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
@@ -52,6 +55,22 @@ usersRouter.patch(
         } catch(err) {
             return response.status(400).json({ error: err.message });
         }
+});
+
+usersRouter.get('/roles', ensureAuthenticated, async (request, response) => {
+
+    const id = request.user.id;
+
+    const rolesRepositories = getRepository(UserRole);
+
+    const roles = await rolesRepositories.find({
+        where: {
+            user_id: id
+        }
+    });
+
+    return response.json(roles);
+
 });
 
 
