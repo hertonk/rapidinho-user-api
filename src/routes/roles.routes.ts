@@ -6,7 +6,7 @@ import ensureAuthenticated from "../middlewares/ensureAuthenticated";
 
 const rolesRouter = Router();
 
-rolesRouter.post('/', ensureAuthenticated, is(["admin"]), async (request, response) => {
+rolesRouter.post('/', ensureAuthenticated, async (request, response) => {
 
     const { name, description } = request.body;
 
