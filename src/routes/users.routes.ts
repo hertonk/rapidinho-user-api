@@ -73,5 +73,15 @@ usersRouter.get('/roles', ensureAuthenticated, async (request, response) => {
 
 });
 
+usersRouter.get('/', ensureAuthenticated, async (request, response) => {
+
+    const usersRepositories = getRepository(User);
+
+    const users = await usersRepositories.find();
+
+    return response.json(users);
+
+});
+
 
 export default usersRouter;

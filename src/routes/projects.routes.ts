@@ -264,4 +264,34 @@ projectsRouter.delete('/:id', ensureAuthenticated, async (request, response) => 
 
 });
 
+
+projectsRouter.patch('date/:id', ensureAuthenticated, async (request, response) => {
+
+    try{
+        const { 
+            date
+         } = request.body;
+
+         const { 
+            id
+         } = request.params;
+
+        const updateProject = new UpdateProjectService();
+
+        const projectsRepository = getRepository(Project);
+
+        const project = await projectsRepository.findOne(id);
+
+        project.created_at = date;
+
+        await projectsRepository.save(project);
+
+        return response.json(project);
+    } catch(err){
+        return response.status(400).json({ error: err.message });
+    }
+    
+});
+
+
 export default projectsRouter;

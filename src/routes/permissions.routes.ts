@@ -2,6 +2,8 @@ import { Router } from "express";
 import { CreatePermissionService } from "../services/CreatePermissionService";
 
 import ensureAuthenticated from "../middlewares/ensureAuthenticated";
+import { getRepository } from "typeorm";
+import Permission from "../models/Permission";
 
 const permissionsRouter = Router();
 
@@ -18,6 +20,17 @@ permissionsRouter.post('/', ensureAuthenticated, async (request, response) => {
     }
 
     return response.json(result);
+
+});
+
+
+permissionsRouter.get('/', ensureAuthenticated, async (request, response) => {
+
+  const permissionsRepositories = getRepository(Permission); 
+
+  const permissions = await permissionsRepositories.find();
+
+  return response.json(permissions);
 
 });
 

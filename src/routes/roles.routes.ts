@@ -3,6 +3,8 @@ import { CreateRoleService } from "../services/CreateRoleService";
 import { is } from "../middlewares/permissions";
 
 import ensureAuthenticated from "../middlewares/ensureAuthenticated";
+import { getRepository, Repository } from "typeorm";
+import Role from "../models/Role";
 
 const rolesRouter = Router();
 
@@ -20,6 +22,17 @@ rolesRouter.post('/', async (request, response) => {
 
     return response.json(result);
     
+});
+
+
+rolesRouter.get('/', ensureAuthenticated, async (request, response) => {
+
+  const rolesRepositories = getRepository(Role);
+
+  const roles = await rolesRepositories.find();
+
+  return response.json(roles);
+  
 });
 
 export default rolesRouter;
