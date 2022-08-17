@@ -5,6 +5,7 @@ import Driver from "../models/Driver";
 import RequestReview from "../models/RequestReview";
 import DriverTransaction from "../models/DriverTransaction";
 import Request from "../models/Request";
+import RequestActivity from "../models/RequestActivity";
 
 const driversRouter = Router();
 
@@ -21,11 +22,17 @@ driversRouter.delete('/:id', async (request, response) => {
 
         const requestsRepositories = getRepository(Request);
 
+        const requestsActivitysRepositories = getRepository(RequestActivity);
+
         await requestsReviewsRepositories.delete({ driverId: id });
 
         await driverTransactionsRepositories.delete({ driverId: id });
 
-        await requestsRepositories.delete({ driverId: id });
+        const requests = await requestsRepositories.find({ where: { driverId: id } });
+
+        const requestsForEach = requests.forEach(async (item) => {
+            await requestsActivitysRepositories.delete({ requestId: item.id });
+        });
 
         const driver = await driversRepositories.delete(id);
 
