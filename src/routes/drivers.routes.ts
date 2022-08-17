@@ -3,6 +3,7 @@ import { Router } from "express";
 import { getRepository } from "typeorm";
 import Driver from "../models/Driver";
 import RequestReview from "../models/RequestReview";
+import DriverTransaction from "../models/DriverTransaction";
 
 const driversRouter = Router();
 
@@ -15,9 +16,13 @@ driversRouter.delete('/:id', async (request, response) => {
 
         const requestsReviewsRepositories = getRepository(RequestReview);
 
+        const driverTransactionsRepositories = getRepository(DriverTransaction);
+
         await requestsReviewsRepositories.delete({ driverId: id });
 
-        const driver = await driversRepositories.delete(id);
+        await driverTransactionsRepositories.delete({ driverId: id });
+
+        //const driver = await driversRepositories.delete(id);
 
         return response.json({message : "The driver deleted"});
     } catch(err){
