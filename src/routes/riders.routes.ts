@@ -20,7 +20,7 @@ ridersRouter.delete('/:id',  async (request, response) => {
 
         await ridersWalletsRepositories.delete({ riderId: id });
 
-       // await requestsRepositories.delete({ riderId: id });
+        await requestsRepositories.delete({ riderId: id });
 
         const rider = await ridersRepositories.delete(id);
 
