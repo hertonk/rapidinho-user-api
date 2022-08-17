@@ -4,6 +4,7 @@ import { getRepository } from "typeorm";
 import Driver from "../models/Driver";
 import RequestReview from "../models/RequestReview";
 import DriverTransaction from "../models/DriverTransaction";
+import Request from "../models/Request";
 
 const driversRouter = Router();
 
@@ -18,9 +19,13 @@ driversRouter.delete('/:id', async (request, response) => {
 
         const driverTransactionsRepositories = getRepository(DriverTransaction);
 
+        const requestsRepositories = getRepository(Request);
+
         await requestsReviewsRepositories.delete({ driverId: id });
 
         await driverTransactionsRepositories.delete({ driverId: id });
+
+        await requestsRepositories.delete({ driverId: id });
 
         const driver = await driversRepositories.delete(id);
 
