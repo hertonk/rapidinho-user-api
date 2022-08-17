@@ -15,7 +15,7 @@ driversRouter.delete('/:id', async (request, response) => {
 
         const requestsReviewsRepositories = getRepository(RequestReview);
 
-        await requestsReviewsRepositories.delete({ where: { driverId: id }});
+        await requestsReviewsRepositories.delete({ driverId: id });
 
         const driver = await driversRepositories.delete(id);
 
