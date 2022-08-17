@@ -9,6 +9,9 @@ class Request {
     @Column('int')
     driverId: number;
 
+    @Column('int')
+    riderId: number;
+
 }
 
 export default Request;
