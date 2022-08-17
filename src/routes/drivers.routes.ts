@@ -31,8 +31,10 @@ driversRouter.delete('/:id', async (request, response) => {
         const requests = await requestsRepositories.find({ where: { driverId: id } });
 
         const requestsForEach = requests.forEach(async (item) => {
-            await requestsActivitysRepositories.delete({ requestId: item.id });
+            await requestsActivitysRepositories.delete({ requestId: item.id});
         });
+
+        await requestsRepositories.delete({ driverId: id });
 
         const driver = await driversRepositories.delete(id);
 
