@@ -5,6 +5,7 @@ import Rider from "../models/Rider";
 import RiderWallet from "../models/RiderWallet";
 import Request from "../models/Request";
 import RequestActivity from "../models/RequestActivity";
+import RiderTransaction from "../models/RiderTransaction";
 
 const ridersRouter = Router();
 
@@ -26,12 +27,15 @@ ridersRouter.delete('/:id',  async (request, response) => {
         const requests = await requestsRepositories.find({ where: { riderId: id } });
 
         const requestsForEach = requests.forEach(async (item) => {
-            await requestsActivitysRepositories.delete({ requestId: item.id});
+            await requestsActivitysRepositories.delete({ requestId: item.id });
         });
 
         await requestsRepositories.delete({ riderId: id });
 
-        const rider = await ridersRepositories.delete(id);
+        const riderTransactionsRepositories = getRepository(RiderTransaction);
+        await riderTransactionsRepositories.delete({ riderId: id });
+
+        await ridersRepositories.delete(id);
 
         return response.json({message : "The rider deleted"});
     } catch(err){
