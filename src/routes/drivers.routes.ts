@@ -22,7 +22,7 @@ driversRouter.delete('/:id', async (request, response) => {
 
         await driverTransactionsRepositories.delete({ driverId: id });
 
-        //const driver = await driversRepositories.delete(id);
+        const driver = await driversRepositories.delete(id);
 
         return response.json({message : "The driver deleted"});
     } catch(err){
