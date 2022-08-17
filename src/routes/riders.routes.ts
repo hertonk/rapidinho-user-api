@@ -4,6 +4,7 @@ import { getRepository } from "typeorm";
 import Rider from "../models/Rider";
 import RiderWallet from "../models/RiderWallet";
 import Request from "../models/Request";
+import RequestActivity from "../models/RequestActivity";
 
 const ridersRouter = Router();
 
