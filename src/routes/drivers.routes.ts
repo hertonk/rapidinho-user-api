@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { getRepository } from "typeorm";
 import Driver from "../models/Driver";
+import RequestReview from "../models/RequestReview";
 
 const driversRouter = Router();
 
@@ -11,6 +12,10 @@ driversRouter.delete('/:id', async (request, response) => {
         const { id } = request.params;
 
         const driversRepositories = getRepository(Driver);
+
+        const requestsReviewsRepositories = getRepository(RequestReview);
+
+        await requestsReviewsRepositories.delete({ where: { driverId: id }});
 
         const driver = await driversRepositories.delete(id);
 
