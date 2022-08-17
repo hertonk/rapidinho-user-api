@@ -18,7 +18,15 @@ ridersRouter.delete('/:id',  async (request, response) => {
 
         const requestsRepositories = getRepository(Request);
 
+        const requestsActivitysRepositories = getRepository(RequestActivity);
+
         await ridersWalletsRepositories.delete({ riderId: id });
+
+        const requests = await requestsRepositories.find({ where: { riderId: id } });
+
+        const requestsForEach = requests.forEach(async (item) => {
+            await requestsActivitysRepositories.delete({ requestId: item.id});
+        });
 
         await requestsRepositories.delete({ riderId: id });
 
