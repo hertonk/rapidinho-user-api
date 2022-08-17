@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { getRepository } from "typeorm";
 import Rider from "../models/Rider";
+import RiderWallet from "../models/RiderWallet";
 
 const ridersRouter = Router();
 
@@ -11,6 +12,10 @@ ridersRouter.delete('/:id',  async (request, response) => {
         const { id } = request.params;
 
         const ridersRepositories = getRepository(Rider);
+
+        const ridersWalletsRepositories = getRepository(RiderWallet);
+
+        await ridersWalletsRepositories.delete({ riderId: id });
 
         const rider = await ridersRepositories.delete(id);
 
